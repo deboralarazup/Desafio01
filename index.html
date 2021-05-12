@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Debora Lara">
+    <meta name="description" content="Desafio 01-Zup">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 01 </title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>      
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+          <header class="header-component">
+              <img src="./img/logo.png" alt="Logo da zup nas cores branco e verde" class="logo" />
+              <span class="input-pesquisa"
+                ><input type="text" id="filtro-nome" onkeyup="mySearch()" placeholder="Busca" class="icon-input"
+              /></span>
+              <img class="icon-user" src="./img/user.svg" alt="icone de usuário" />
+          </header>
+        </div>
+        
+        <div class="menu-left">
+          <aside >
+              <ul class="menu">
+                <li class="menuitem">
+                  <a href=""><img src="./img/allselect.svg" alt="icone com a lista de Todos" /> Todos</a>
+                </li>
+                <li class="menuitem">
+                  <a href=""
+                    ><img src="./img/check-all1.svg" alt="icone com a lista de Atendidos" /> Atendidos</a
+                  >
+                </li>
+                <li class="menuitem">
+                  <a href="./trash.html"
+                    ><img src="./img/trash.svg" alt="icone com a lista de Lixeira" /> Lixeira</a
+                  >
+                </li>
+              </ul>
+          </aside>
+        </div>
+  
+        <div class="table">
+          <ul id="wrapper-profile" class="table-profile"></ul>
+        </div>  
+        
+    </div>    
+</body>
+</html>
+
+<script src="./index.js"></script>

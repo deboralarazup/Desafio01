@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;      /*   1rem = 10px;     10px/16px = 62.5%    */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background: var(--gray-body);
+    color: var(--gray-clear);
+    height: auto; 
+    display: grid;
+}
+
+ul{
+    list-style: none;
+}
+
+/*Variaveis de cor*/
+:root{
+    --white: #ffffff;
+    --shadow: #d6d6d6;
+    --black: #000000;
+    --dark-blue:#3e4854;
+    --red: #aa4d4d;
+    --green: green;
+    --gray: #b2aeaefd;
+    --gray-clear:#ababab;
+    --gray-body:#f1f1f1;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-areas: 
+    'header header'
+    'menu-left table' ;
+} 
+
+/* Style do header */
+.header {
+    grid-area: header;
+    background-color: var(--dark-blue);  
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.header-component{
+    display: flex;
+    flex-wrap:initial;
+    justify-content: space-between;
+}
+
+.logo {
+    max-width: 8rem;
+    padding-left: 0.5rem;
+    flex-direction: row-reverse
+}
+
+.input-pesquisa{ 
+    align-self: center;
+}
+
+.icon-input{
+    align-content: center;
+    border-radius: 50px;
+    width: 66rem;
+    height: 3.4rem;
+    padding-left: 2.6rem;
+    background-image:url(./img/search.svg); 
+    background-repeat: no-repeat; 
+    background-position: 2px 3px;
+}
+  
+.icon-user{
+    width: 4rem;
+    padding-right: 1rem;
+}
+
+/* Style the menu-left column */
+.menu-left {
+    grid-area: menu-left;
+    background-color: var(--white);
+    position: sticky;
+    top: 0;
+    float: left;
+    display: grid;
+    margin-right: 2.5rem;
+    height: 100vh;
+}
+
+.menuitem {   
+    margin-top: 3rem;  
+}
+
+.menuitem a{
+    display: flex;
+    color: var(--gray);
+    font-size: 2.4rem;
+    text-decoration:none; 
+    justify-content: center;
+    align-items: center
+}
+
+.menuitem a:hover{
+    color: var(--black);
+} 
+
+/* Style the table column */
+.table {
+  grid-area: table;
+}
+
+.table-profile {
+  margin: 30;
+  box-shadow: 0.3rem -0.2rem 0.2rem var(--shadow);
+  background: var(--white);
+  font-size: 1.5rem;
+} 
+
+.table-profile .list-profile {
+    border-top: 0.1rem solid var(--shadow);
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-profile>*{
+    width: 16rem;
+    display: flex;
+    align-items: center;
+}
+
+.table-action{
+    width: 8rem;
+    padding: 0.2rem;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.item-profile {
+    width: 7rem;
+}
+
+.item-profile img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.item-profile span {
+    margin-left: 10px;
+    color: var(--black);
+}
+
+.span-email{
+    width: 10rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* MEDIA QUERY */
+@media only screen and (max-width: 40em) {    
+    .page { 
+        grid-template-columns: auto auto;
+        grid-template-rows: 6rem auto auto;
+        grid-template-areas: "header "
+                             "menu-left"
+                             "table ";
+    }
+
+    .logo {
+        max-width: 7.8rem;
+    }
+    .icon-input{
+        width: 36rem;
+        height: 2.9rem;
+    }
+
+    .icon-user{
+        width: 3.4rem;
+        padding-right: 1rem;
+    }
+
+    .menu{
+        display: flex;
+    }
+
+    .menu-left { 
+        height: 5rem;
+        display:flex;
+        padding-right: 19rem;
+        margin-right: 0px;
+        justify-content: space-around;
+    }
+    
+    .menuitem {   
+        display: flex;
+        margin-top: 1rem; 
+        margin-right: 5rem;
+        
+    }
+    
+    .menuitem a{
+        font-size: 1rem;
+        align-items: center
+    }
+
+    .table-profile {
+        font-size: 1rem;
+      }
+}
+
+@media only screen and (max-width: 768px) {
+    .menu{
+        width: 10rem;
+    }
+
+    .menuitem a{
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "user": [
+        {   
+            
+            "img":"./img/lorraine.jpg",
+            "nome": "Lorraine", 
+            "email": "lorraine.beck22@exemple.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "Uberlândia - MG"
+        },
+        {
+            "img":"./img/loren.jpg",
+            "nome": "Lorem", 
+            "email": "loremipsum@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "Uberlândia - MG"
+        },
+        { 
+            "img":"./img/dolor.jpg",
+            "nome": "Dolor", 
+            "email": "dolorsit123@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "São Paulo - SP"
+        },
+        { 
+            "img":"./img/Consectut.jpg",
+            "nome": "Consectut", 
+            "email": "consectut123@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "Uberlândia - MG"
+        },
+        { 
+            "img":"./img/elit.jpg",
+            "nome": "Elit", 
+            "email": "elitamet@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "São Paulo - SP"
+        },
+        { 
+            "img":"./../img/Adipiscing.jpg",
+            "nome": "Adipiscinq",
+            "email": "adipiscinq@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "São Paulo - SP"
+        },
+        { 
+            "img":"./img/ipsun.jpg",
+            "nome": "Ipsum", 
+            "email": "ipsumdolor12345@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "Uberlândia - MG"
+        },
+        { 
+            "img":"./img/Beack_Elit.jpg",
+            "nome": "Beck Elit", 
+            "email": "beckelit@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "Belo Horizonte - MG"
+        },
+        { 
+            "img":"./img/loren.jpg",
+            "nome": "Lorem2", 
+            "email": "loremipsum2@mail.com", 
+            "contato": "(960)-861-1890", 
+            "estado": "São Paulo - SP"
+        }  
+    ]
+}
