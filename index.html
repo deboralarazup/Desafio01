@@ -3,180 +3,49 @@
     <meta charset="utf-8">
     <meta name="author" content="Debora Lara">
     <meta name="description" content="Desafio 01-Zup">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio 01 </title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./img/logo.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./img/logo.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./img/logo.png">
-    <link rel="apple-touch-icon-precomposed" href="./img/logo.png">
-    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />      
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>      
 </head>
 <body>
-    <header>
-        <img src="./img/logo.png" alt="Logo da zup" class="logo">
-        <span class="inputPesquisa"><input id="filtro-nome" placeholder="Busca" class="icon"/></span>
-        <img class="user" src="./img/user.svg" alt="Imagem de usuário">
+    <div class="page">
+        <div class="header">
+          <header class="header-component">
+              <img src="./img/logo.png" alt="Logo da zup nas cores branco e verde" class="logo" />
+              <span class="input-pesquisa"
+                ><input type="text" id="filtro-nome" onkeyup="mySearch()" placeholder="Busca" class="icon-input"
+              /></span>
+              <img class="icon-user" src="./img/user.svg" alt="icone de usuário" />
+          </header>
+        </div>
         
-    </header>
-    <main class="main">
-        <aside>
-            <nav>
-                <ul class="nav">
-                    <li><a href="#"><img src="./img/allselect.svg" alt=""> Todos</a></li>
-                    <li><a href="./selected.html"><img src="./img/check-all1.svg" alt=""> Atendidos</a></li>
-                    <li><a href="./delete.html"><img src="./img/trash.svg" alt=""> Lixeira</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <article>
-         
-            <section>
-                <table id="lista" class="table">
-                    <thead>
-                        <tr>
-                            <th class="users">Usuario</th>
-                            <th>e-mail</th>
-                            <th>Contato</th>
-                            <th>Estado</th>
-                            <th class="action">actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <img src="./img/lorraine.jpg" alt="Foto de perfil do usuário">
-                                <span>Lorraine</span> 
-                            </td>
-                            <td>lorraine.beack22@exemple.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>Uberlândia - MG</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/loren.jpg"  alt="Foto de perfil do usuário">
-                                <span>Loren</span>
-                            </td>
-                            <td>lorenipsun@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>Uberlândia - MG</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/dolor.jpg"  alt="Foto de perfil do usuário">
-                                <span>Dolor</span> 
-                            </td>
-                            <td>dolorsit@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>São Paulo - SP</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/Consectut.jpg"  alt="Foto de perfil do usuário">
-                                <span>Consectut</span> 
-                            </td>
-                            <td>consectutor123@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>Uberlândia - MG</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/elit.jpg" alt="Foto de perfil do usuário">
-                                <span>Elit</span>    
-                            </td>
-                            <td>elitmet@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>São Paulo - SP</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/Adipiscing.jpg"  alt="Foto de perfil do usuário">
-                                <span>Adipiscing</span>  
-                            </td>
-                            <td>adipiscing@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>São Paulo - SP</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/ipsun.jpg"  alt="Foto de perfil do usuário">
-                                <span>Ipsum</span>
-                            </td>
-                            <td>ipsundolor12345@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>Uberlândia - MG</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/Beack_Elit.jpg"  alt="Foto de perfil do usuário">
-                                <span>Beack Elit</span>    
-                            </td>
-                            <td>beackelitsit@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>Belo Horizonte - MG</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="./img/loren.jpg"  alt="Foto de perfil do usuário">
-                                <span>Loren</span>    
-                            </td>
-                            <td>loremipsum@mail.com</td>
-                            <td>(960)-861-1890</td>
-                            <td>São Paulo - SP</td>
-                            <td>
-                                <a href="./delete.html"><img src="./img/trash.svg" alt="icone de excluir"></a>
-                                <a href="./selected.html"><img src="./img/allselect.svg" alt="icone de selecionar"></a>
-                                <a href="./index.html"><img src="./img/check2.svg" alt="icone de check"></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                  </table>
-            </section>
-            <footer class="footer">
-                <p>Desenvolvido by Debora Lara</p>
-            </footer>
-        </article>
-    </main>
-    
+        <div class="menu-left">
+          <aside >
+              <ul class="menu">
+                <li class="menuitem">
+                  <a href=""><img src="./img/allselect.svg" alt="icone com a lista de Todos" /> Todos</a>
+                </li>
+                <li class="menuitem">
+                  <a href=""
+                    ><img src="./img/check-all1.svg" alt="icone com a lista de Atendidos" /> Atendidos</a
+                  >
+                </li>
+                <li class="menuitem">
+                  <a href="./trash.html"
+                    ><img src="./img/trash.svg" alt="icone com a lista de Lixeira" /> Lixeira</a
+                  >
+                </li>
+              </ul>
+          </aside>
+        </div>
+  
+        <div class="table">
+          <ul id="wrapper-profile" class="table-profile"></ul>
+        </div>  
+        
+    </div>    
 </body>
 </html>
 
