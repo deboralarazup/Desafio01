@@ -83,7 +83,7 @@
   }
   
   .icon-user {
-    width: 4rem;
+    width: 5rem;
     padding-right: 1rem;
   }
   
@@ -333,16 +333,16 @@
 
   
 .circle {
-    background-image: url("./img/chevron-left.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
-    margin: 2rem;
-    border: none;
-    cursor: pointer;
-    margin-right: 120rem;
+  background-image: url("./img/chevron-left.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 2rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 120rem;
 }
 
   @media only screen and (max-width: 40em) {
