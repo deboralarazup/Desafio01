@@ -153,6 +153,7 @@ renderProfiles();
 const buildDetalhes = (listaDetails) => {
   const htmlDetais = listaDetails.map((listaDetail) => {
     let listDetais = `
+    <button class="circle" onclick="returnProfile()"></button>
     <div class="card">
       <div class="banner">
         <img class="user" src="${listaDetail.img}" alt="">
@@ -195,14 +196,19 @@ const renderDetails = (email, List) => {
       listaDetails = listaGlobal.filter((novaTodos) => novaTodos.email === email);
       document.querySelector(".page").style.display = "none";
       const wrapperProfile = document.querySelector("#detalhes");
-      wrapperProfile.style.display = "";
-      wrapperProfile.innerHTML = "";
+      
       const htmlProfiles = buildDetalhes(listaDetails, "details");
       htmlProfiles.forEach((htmlProfile) =>
       wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
       )
     }
 };
+
+const returnProfile= () => {
+  document.querySelector("#detalhes").style.display = "none";
+  const wrapperProfile = document.querySelector(".page");
+  wrapperProfile.style.display = "";  
+}
 
 function actionsDetails(propriedade) {
   let person = listaDetails[listaDetails.length - 1];
