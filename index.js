@@ -1,11 +1,150 @@
-const input = document.getElementById('filtro-nome');
-//fazendo o uso do spread/rest para array
-const trs = [...document.querySelectorAll('#lista tbody tr')];
+const URL = "http://localhost:3000/user";
+let novaLIstaExcluidos = [];
+let novaLIstaAtendidos = [];
+let novaLIstaTodos = [];
+let novaLista = [];
+let listaDetails = [];
+let listaGlobal = [];
 
-input.addEventListener('input', () => {
-  const search = input.value.toLowerCase();
-  trs.forEach(el => {
-    const matches = el.textContent.toLowerCase().includes(search);
-    el.style.display = matches ? 'table-row' : 'none';
+function mySearch() {
+  // Declaração das variaveis
+  let input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("filtro-nome");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("wrapper-profile");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+    span = li[i].getElementsByTagName("span")[0];
+    txtValue = span.textContent || span.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+const getProfile = async () => {
+  const profiles = await fetch(URL).then((resp) => resp.json());
+  listaGlobal = profiles;
+  return profiles;
+};
+
+const renderProfiles = async () => {
+  const profiles = await getProfile();
+  novaLIstaTodos = profiles;
+  renderList(novaLIstaTodos, 'todos');
+};
+
+const buildProfile = (profiles, iconsType) => {
+  const htmlProfile = profiles.map((profile) => {
+    let listProfile = "";
+    
+      listProfile = `
+      <li class="list-profile" id="profile" >
+        <div class="item-profile" data-email='${profile.email}' onClick= "renderDetails('${profile.email}', 'details')">
+          <img src="${profile.img}" />
+          <span>${profile.name}</span>
+        </div>
+        <span class="span-email" title="${profile.email}">${profile.email}</span>
+        <span>${profile.number}</span>
+        <span>${profile.city}</span>
+        <div class="table-action">
+        ${profileIcons(iconsType, profile)}
+        </div>
+      </li>
+    `;
+    return listProfile;
   });
-});
+  return htmlProfile;
+};
+
+//Verifica em qual lista esta e mostra os icones corretos por lista, como se fose um switch-case
+const profileIcons = (type, profile) => {
+  let listIcon = {
+    todos: ` 
+    <img class="trash" src="./img/trash.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'remove', 'todos')" /> 
+    <img class="check2" src="./img/check2.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'attended', 'todos')" /> `,
+
+    attended: ` 
+    <img class="trash" src="./img/trash.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'remove', 'attended')" /> 
+    <img class="allselect" src="./img/allselect.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'todos', 'attended')" /> `,
+
+    remove: `
+    <img class="allselect" src="./img/allselect.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'todos', 'remove')" /> 
+    <img class="check2" src="./img/check2.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'attended', 'remove')" /> `,
+  };
+  return listIcon[type];
+}
+
+// coloca item na lista da ação escolhida e carrega a lista novamente
+const moveProfile = (email, action, list) => {
+  const removidoProfile = removeProfile(email, list);
+  switch (action) {
+    case "remove":
+      novaLIstaExcluidos.push(removidoProfile);
+      renderList(removidoProfile, list);
+      break;
+    case "attended":
+      novaLIstaAtendidos.push(removidoProfile);
+      renderList(removidoProfile, list);
+      break;
+    case "todos":
+      novaLIstaTodos.push(removidoProfile);
+      renderList(removidoProfile, list);
+      break;
+    default:
+      break;
+  };
+  renderList(novaLIstaTodos);
+};
+
+// valida lista 
+const removeProfile =(email, list)=>{
+  if(list === "todos"){
+    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.email === email);
+    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.email !== email);
+    return profileRemoved;
+
+  } 
+  if(list === "remove"){
+    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.email === email);
+    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.email !== email);
+    return profileRemoved;
+  } 
+  if(list === "attended"){
+    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.email === email);
+    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.email !== email);
+    return profileRemoved;
+  } 
+}
+
+// Carregamento do html
+const renderList = (list, typeList) => {
+  if(typeList === 'todos'){
+    const wrapperProfile = document.querySelector("#wrapper-profile");
+    wrapperProfile.innerHTML = "";
+    const htmlProfiles = buildProfile(novaLIstaTodos, "todos");
+    htmlProfiles.forEach((htmlProfile) =>
+      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
+    );
+  };
+  if (typeList === 'attended'){
+    const wrapperProfile = document.querySelector("#wrapper-profile");
+    wrapperProfile.innerHTML = "";
+    const htmlProfiles = buildProfile(novaLIstaAtendidos, "attended");
+    htmlProfiles.forEach((htmlProfile) =>
+      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
+    );
+  };
+  if (typeList === 'remove'){
+    const wrapperProfile = document.querySelector("#wrapper-profile");
+    wrapperProfile.innerHTML = "";
+    const htmlProfiles = buildProfile(novaLIstaExcluidos, "remove");
+    htmlProfiles.forEach((htmlProfile) =>
+      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
+    );
+  };
+};
+renderProfiles();
