@@ -79,8 +79,8 @@ const profileIcons = (type, profile) => {
 }
 
 // coloca item na lista da ação escolhida e carrega a lista novamente
-const moveProfile = (email, action, list) => {
-  const removidoProfile = removeProfile(email, list);
+const moveProfile = (id, action, list) => {
+  const removidoProfile = removeProfile(id, list);
   console.log(removidoProfile)
   switch (action) {
     case "remove":
@@ -103,21 +103,21 @@ const moveProfile = (email, action, list) => {
 };
 
 // valida lista 
-const removeProfile =(email, list)=>{
+const removeProfile =(id, list)=>{
   if(list === "todos"){
-    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.id === email);
-    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.id !== email);
+    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.id === id);
+    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.id !== id);
     return profileRemoved;
 
   } 
   if(list === "remove"){
-    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.id === email);
-    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.id !== email);
+    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.id === id);
+    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.id !== id);
     return profileRemoved;
   } 
   if(list === "attended"){
-    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.id === email);
-    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.id !== email);
+    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.id === id);
+    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.id !== id);
     return profileRemoved;
   } 
 }
