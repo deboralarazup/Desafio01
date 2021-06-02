@@ -43,7 +43,7 @@ const buildProfile = (profiles, iconsType) => {
     
       listProfile = `
       <li class="list-profile" id="profile" >
-        <div class="item-profile" data-email='${profile.email}' onClick= "renderDetails('${profile.email}', 'details')">
+        <div class="item-profile" onClick= "renderDetails('${profile.id}', 'details')" >
           <img src="${profile.img}" />
           <span>${profile.name}</span>
         </div>
@@ -64,16 +64,16 @@ const buildProfile = (profiles, iconsType) => {
 const profileIcons = (type, profile) => {
   let listIcon = {
     todos: ` 
-    <img class="trash" src="./img/trash.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'remove', 'todos')" /> 
-    <img class="check2" src="./img/check2.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'attended', 'todos')" /> `,
+    <img class="trash" src="./img/trash.svg"  onclick="moveProfile('${profile.id}', 'remove', 'todos')" /> 
+    <img class="check2" src="./img/check2.svg"  onclick="moveProfile('${profile.id}', 'attended', 'todos')" /> `,
 
     attended: ` 
-    <img class="trash" src="./img/trash.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'remove', 'attended')" /> 
-    <img class="allselect" src="./img/allselect.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'todos', 'attended')" /> `,
+    <img class="trash" src="./img/trash.svg"  onclick="moveProfile('${profile.id}', 'remove', 'attended')" /> 
+    <img class="allselect" src="./img/allselect.svg"  onclick="moveProfile('${profile.id}', 'todos', 'attended')" /> `,
 
     remove: `
-    <img class="allselect" src="./img/allselect.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'todos', 'remove')" /> 
-    <img class="check2" src="./img/check2.svg" data-email='${profile.email}' onclick="moveProfile('${profile.email}', 'attended', 'remove')" /> `,
+    <img class="allselect" src="./img/allselect.svg"  onclick="moveProfile('${profile.id}', 'todos', 'remove')" /> 
+    <img class="check2" src="./img/check2.svg"  onclick="moveProfile('${profile.id}', 'attended', 'remove')" /> `,
   };
   return listIcon[type];
 }
@@ -81,10 +81,12 @@ const profileIcons = (type, profile) => {
 // coloca item na lista da ação escolhida e carrega a lista novamente
 const moveProfile = (email, action, list) => {
   const removidoProfile = removeProfile(email, list);
+  console.log(removidoProfile)
   switch (action) {
     case "remove":
       novaLIstaExcluidos.push(removidoProfile);
       renderList(removidoProfile, list);
+      
       break;
     case "attended":
       novaLIstaAtendidos.push(removidoProfile);
@@ -103,19 +105,19 @@ const moveProfile = (email, action, list) => {
 // valida lista 
 const removeProfile =(email, list)=>{
   if(list === "todos"){
-    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.email === email);
-    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.email !== email);
+    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.id === email);
+    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.id !== email);
     return profileRemoved;
 
   } 
   if(list === "remove"){
-    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.email === email);
-    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.email !== email);
+    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.id === email);
+    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.id !== email);
     return profileRemoved;
   } 
   if(list === "attended"){
-    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.email === email);
-    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.email !== email);
+    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.id === email);
+    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.id !== email);
     return profileRemoved;
   } 
 }
@@ -182,18 +184,18 @@ const buildDetalhes = (listaDetails) => {
 };
 
 // pegando item e colocando na lista
-const SetDetails = (email, list) => {
-  const removidoProfile = renderDetails(email, list);
+const SetDetails = (id, list) => {
+  const removidoProfile = renderDetails(id, list);
   if(List === 'details'){
   listaDetails.push(removidoProfile);
   }
 }   
 
-const renderDetails = (email, List) => {
+const renderDetails = (id, List) => {
   // Pegando a lista
     if(List === 'details'){
      //filtrando item clicado
-      listaDetails = listaGlobal.filter((novaTodos) => novaTodos.email === email);
+      listaDetails = listaGlobal.filter((novaTodos) => novaTodos.id === id);
       document.querySelector(".page").style.display = "none";
       const wrapperProfile = document.querySelector("#detalhes");
       
@@ -212,7 +214,7 @@ const returnProfile= () => {
 
 function actionsDetails(propriedade) {
   let person = listaDetails[listaDetails.length - 1];
-  let finalPerson = listaGlobal.filter((el) => el.email == person.email);
+  let finalPerson = listaGlobal.filter((el) => el.id == person.id);
 
   // coloca no html
   let info = null;
