@@ -1,0 +1,103 @@
+{
+    "user": [
+        {   
+            "id": "1", 
+            "img":"./img/lorraine.jpg",
+            "name": "Lorraine", 
+            "email": "lorraine.beck22@exemple.com", 
+            "number": "(960)-861-1890", 
+            "city": "Uberlândia - MG",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        {
+            "id": "2",
+            "img":"./img/loren.jpg",
+            "name": "Lorem", 
+            "email": "loremipsum@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "Uberlândia - MG",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "3",
+            "img":"./img/dolor.jpg",
+            "name": "Dolor", 
+            "email": "dolorsit123@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "São Paulo - SP",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "4",
+            "img":"./img/Consectut.jpg",
+            "name": "Consectut", 
+            "email": "consectut123@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "Uberlândia - MG",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "5",
+            "img":"./img/elit.jpg",
+            "name": "Elit", 
+            "email": "elitamet@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "São Paulo - SP",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "6",
+            "img":"./img/Adipiscing.jpg",
+            "name": "Adipiscinq",
+            "email": "adipiscinq@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "São Paulo - SP",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "7",
+            "img":"./img/ipsun.jpg",
+            "name": "Ipsum", 
+            "email": "ipsumdolor12345@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "Uberlândia - MG",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "8",
+            "img":"./img/Beack_Elit.jpg",
+            "name": "Beck Elit", 
+            "email": "beckelit@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "Belo Horizonte - MG",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        },
+        { 
+            "id": "9",
+            "img":"./img/loren.jpg",
+            "name": "Lorem2", 
+            "email": "loremipsum2@mail.com", 
+            "number": "(960)-861-1890", 
+            "city": "São Paulo - SP",
+            "password" : 12354,
+            "birthday": "16/08/1995",
+            "status": "todos"
+        }  
+    ]
+}
