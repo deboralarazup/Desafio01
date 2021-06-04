@@ -8,7 +8,8 @@
             "number": "(960)-861-1890", 
             "city": "Uberlândia - MG",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         {
             "id": "2",
@@ -18,7 +19,8 @@
             "number": "(960)-861-1890", 
             "city": "Uberlândia - MG",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "3",
@@ -28,7 +30,8 @@
             "number": "(960)-861-1890", 
             "city": "São Paulo - SP",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "4",
@@ -38,7 +41,8 @@
             "number": "(960)-861-1890", 
             "city": "Uberlândia - MG",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "5",
@@ -48,7 +52,8 @@
             "number": "(960)-861-1890", 
             "city": "São Paulo - SP",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "6",
@@ -58,7 +63,8 @@
             "number": "(960)-861-1890", 
             "city": "São Paulo - SP",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "7",
@@ -68,7 +74,8 @@
             "number": "(960)-861-1890", 
             "city": "Uberlândia - MG",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "8",
@@ -78,7 +85,8 @@
             "number": "(960)-861-1890", 
             "city": "Belo Horizonte - MG",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         },
         { 
             "id": "9",
@@ -88,7 +96,8 @@
             "number": "(960)-861-1890", 
             "city": "São Paulo - SP",
             "password" : 12354,
-            "birthday": "16/08/1995"
+            "birthday": "16/08/1995",
+            "status": "todos"
         }  
     ]
 }

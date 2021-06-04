@@ -1,10 +1,8 @@
 const URL = "http://localhost:3000/user";
-let novaLIstaExcluidos = [];
-let novaLIstaAtendidos = [];
 let novaLIstaTodos = [];
-let novaLista = [];
 let listaDetails = [];
 let listaGlobal = [];
+let currentList = [];
 
 function mySearch() {
   // Declaração das variaveis
@@ -13,7 +11,6 @@ function mySearch() {
   filter = input.value.toUpperCase();
   ul = document.getElementById("wrapper-profile");
   li = ul.getElementsByTagName("li");
-
   for (i = 0; i < li.length; i++) {
     span = li[i].getElementsByTagName("span")[0];
     txtValue = span.textContent || span.innerText;
@@ -25,6 +22,7 @@ function mySearch() {
   }
 }
 
+//get info api
 const getProfile = async () => {
   const profiles = await fetch(URL).then((resp) => resp.json());
   listaGlobal = profiles;
@@ -34,9 +32,10 @@ const getProfile = async () => {
 const renderProfiles = async () => {
   const profiles = await getProfile();
   novaLIstaTodos = profiles;
-  renderList(novaLIstaTodos, 'todos');
+  renderList('todos');
 };
 
+//construção da lista
 const buildProfile = (profiles, iconsType) => {
   const htmlProfile = profiles.map((profile) => {
     let listProfile = "";
@@ -51,7 +50,9 @@ const buildProfile = (profiles, iconsType) => {
         <span>${profile.number}</span>
         <span>${profile.city}</span>
         <div class="table-action">
-        ${profileIcons(iconsType, profile)}
+        <img class="trash" src="./img/trash.svg"  onclick="moveProfile('${profile.id}', 'remove', 'todos')" /> 
+        <img class="check2" src="./img/check2.svg"  onclick="moveProfile('${profile.id}', 'attended', 'todos')" /> 
+        <img class="allselect" src="./img/allselect.svg"  onclick="moveProfile('${profile.id}', 'todos', 'attended')" />
         </div>
       </li>
     `;
@@ -60,94 +61,37 @@ const buildProfile = (profiles, iconsType) => {
   return htmlProfile;
 };
 
-//Verifica em qual lista esta e mostra os icones corretos por lista, como se fose um switch-case
-const profileIcons = (type, profile) => {
-  let listIcon = {
-    todos: ` 
-    <img class="trash" src="./img/trash.svg"  onclick="moveProfile('${profile.id}', 'remove', 'todos')" /> 
-    <img class="check2" src="./img/check2.svg"  onclick="moveProfile('${profile.id}', 'attended', 'todos')" /> `,
-
-    attended: ` 
-    <img class="trash" src="./img/trash.svg"  onclick="moveProfile('${profile.id}', 'remove', 'attended')" /> 
-    <img class="allselect" src="./img/allselect.svg"  onclick="moveProfile('${profile.id}', 'todos', 'attended')" /> `,
-
-    remove: `
-    <img class="allselect" src="./img/allselect.svg"  onclick="moveProfile('${profile.id}', 'todos', 'remove')" /> 
-    <img class="check2" src="./img/check2.svg"  onclick="moveProfile('${profile.id}', 'attended', 'remove')" /> `,
-  };
-  return listIcon[type];
-}
-
-// coloca item na lista da ação escolhida e carrega a lista novamente
-const moveProfile = (id, action, list) => {
-  const removidoProfile = removeProfile(id, list);
-  console.log(removidoProfile)
-  switch (action) {
-    case "remove":
-      novaLIstaExcluidos.push(removidoProfile);
-      renderList(removidoProfile, list);
-      
-      break;
-    case "attended":
-      novaLIstaAtendidos.push(removidoProfile);
-      renderList(removidoProfile, list);
-      break;
-    case "todos":
-      novaLIstaTodos.push(removidoProfile);
-      renderList(removidoProfile, list);
-      break;
-    default:
-      break;
-  };
-  renderList(novaLIstaTodos);
+// Realiza uma "leitura" na lista atual e mapeia o status de cada um, realizando um filtro por status iguais
+const moveProfile = (id, action) => {
+  novaLIstaTodos = novaLIstaTodos.map(item => {
+    if(item.id === id){
+      return{ ...item, status: action}
+    }else {
+      return { ...item}
+    }
+  })
+  renderList(currentList)
 };
 
-// valida lista 
-const removeProfile =(id, list)=>{
-  if(list === "todos"){
-    const profileRemoved = novaLIstaTodos.find((novaTodos) => novaTodos.id === id);
-    novaLIstaTodos = novaLIstaTodos.filter((novaTodos) => novaTodos.id !== id);
-    return profileRemoved;
-
-  } 
-  if(list === "remove"){
-    const profileRemoved = novaLIstaExcluidos.find((novaTodos) => novaTodos.id === id);
-    novaLIstaExcluidos = novaLIstaExcluidos.filter((novaTodos) => novaTodos.id !== id);
-    return profileRemoved;
-  } 
-  if(list === "attended"){
-    const profileRemoved = novaLIstaAtendidos.find((novaTodos) => novaTodos.id === id);
-    novaLIstaAtendidos = novaLIstaAtendidos.filter((novaTodos) => novaTodos.id !== id);
-    return profileRemoved;
-  } 
-}
-
 // Carregamento do html
-const renderList = (list, typeList) => {
-  if(typeList === 'todos'){
-    const wrapperProfile = document.querySelector("#wrapper-profile");
-    wrapperProfile.innerHTML = "";
-    const htmlProfiles = buildProfile(novaLIstaTodos, "todos");
+const renderList = (typeList) => {
+  if(typeList !== currentList){
+    currentList = typeList
+  }
+
+  let newLista = novaLIstaTodos.filter(item => item.status === currentList)
+  const wrapperProfile = document.querySelector("#wrapper-profile");
+  wrapperProfile.innerHTML = "";
+
+  // Valida lista, caso esteja vazia mostra mensagem do else
+  if(newLista.length){
+    const htmlProfiles = buildProfile(newLista, "todos");
     htmlProfiles.forEach((htmlProfile) =>
-      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
-    );
-  };
-  if (typeList === 'attended'){
-    const wrapperProfile = document.querySelector("#wrapper-profile");
-    wrapperProfile.innerHTML = "";
-    const htmlProfiles = buildProfile(novaLIstaAtendidos, "attended");
-    htmlProfiles.forEach((htmlProfile) =>
-      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
-    );
-  };
-  if (typeList === 'remove'){
-    const wrapperProfile = document.querySelector("#wrapper-profile");
-    wrapperProfile.innerHTML = "";
-    const htmlProfiles = buildProfile(novaLIstaExcluidos, "remove");
-    htmlProfiles.forEach((htmlProfile) =>
-      wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
-    );
-  };
+    wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
+  ); 
+  } else {
+    wrapperProfile.insertAdjacentHTML("beforeend", `<p> Nenhum item encontrado </p>`)
+  }  
 };
 renderProfiles();
 
@@ -198,7 +142,6 @@ const renderDetails = (id, List) => {
       listaDetails = listaGlobal.filter((novaTodos) => novaTodos.id === id);
       document.querySelector(".page").style.display = "none";
       const wrapperProfile = document.querySelector("#detalhes");
-      
       const htmlProfiles = buildDetalhes(listaDetails, "details");
       htmlProfiles.forEach((htmlProfile) =>
       wrapperProfile.insertAdjacentHTML("beforeend", htmlProfile)
